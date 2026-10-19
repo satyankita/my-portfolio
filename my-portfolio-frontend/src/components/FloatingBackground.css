@@ -1,0 +1,52 @@
+
+.floating-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.floating-background__particle {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: #14b8a6;
+  box-shadow: 0 0 7px rgba(20, 184, 166, 0.35);
+  animation-name: particle-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.floating-background__glow {            
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.1;
+  animation: ambient-glow 18s ease-in-out infinite alternate;
+}
+
+.floating-background__glow--one {
+  top: 10%;
+  left: -140px;
+  background: #0d8577;
+}
+
+.floating-background__glow--two {
+  right: -140px;
+  top: 55%;
+  background: #194997;
+  animation-delay: -8s;
+}
+
+@media (max-width: 600px) {
+  .floating-background__glow {
+    width: 220px;
+    height: 220px;
+    filter: blur(75px);
+  }
+}

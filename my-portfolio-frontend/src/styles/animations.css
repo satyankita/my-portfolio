@@ -1,0 +1,283 @@
+
+/* =========================================
+   FLOATING BACKGROUND — MIDNIGHT TEAL
+   ========================================= */
+
+:root {
+  --animation-easing: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Keep the background effects behind the website content */
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: #0b1120;
+}
+
+/* Slowly moving navy, teal, and blue glow */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  z-index: -2;
+  pointer-events: none;
+
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #0b1120,
+    #102039,
+    #0b1120,
+    #102a38,
+    #0b1120,
+    #111c30,
+    #0b1120
+  );
+
+  background-size: 200% 200%;
+  animation: gradient-drift 30s ease-in-out infinite alternate;
+  will-change: background-position, filter;
+}
+
+/* Soft ambient teal and blue lighting */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(20, 184, 166, 0.13),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(59, 130, 246, 0.10),
+      transparent 35%
+    );
+
+  background-size: 140% 140%;
+  animation: ambient-glow 18s ease-in-out infinite alternate;
+}
+
+/* The gradient slowly changes direction */
+
+@keyframes gradient-drift {
+  0% {
+    background-position: 0% 20%;
+    filter: hue-rotate(0deg);
+  }
+
+  50% {
+    background-position: 100% 70%;
+    filter: hue-rotate(8deg);
+  }
+
+  100% {
+    background-position: 20% 100%;
+    filter: hue-rotate(-5deg);
+  }
+}
+
+/* The ambient light moves gently */
+
+@keyframes ambient-glow {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.65;
+  }
+
+  50% {
+    background-position: 100% 50%;
+    opacity: 1;
+  }
+
+  100% {
+    background-position: 30% 100%;
+    opacity: 0.75;
+  }
+}
+
+/* =========================================
+   REUSABLE ELEMENT ANIMATIONS
+   ========================================= */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float-gently {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Actual particle movement */
+
+@keyframes particle-float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(12px, -20px, 0);
+  }
+
+  50% {
+    transform: translate3d(-8px, -38px, 0);
+  }
+
+  75% {
+    transform: translate3d(-18px, -18px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 700ms var(--animation-easing) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 900ms ease both;
+}
+
+.animate-float {
+  animation: float-gently 5s ease-in-out infinite;
+}
+
+/* Card interactions */
+
+.card,
+.project-card,
+.skill-card,
+.certificate-card {
+  transition:
+    transform 300ms var(--animation-easing),
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+@media (hover: hover) {
+  .card:hover,
+  .project-card:hover,
+  .skill-card:hover,
+  .certificate-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(20, 184, 166, 0.45);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+
+/* ========================================
+   LIGHT MODE ANIMATIONS
+======================================== */
+
+:root[data-theme="light"] body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Light mode animated background */
+:root[data-theme="light"] body::before {
+  opacity: 0.12;
+}
+
+:root[data-theme="light"] body::after {
+  opacity: 0.08;
+}
+
+/* Floating particles */
+:root[data-theme="light"] .floating-background__particle {
+  background: #0d9488;
+  box-shadow: 0 0 8px rgba(13, 148, 136, 0.25);
+}
+
+/* Soft light mode glow */
+:root[data-theme="light"] .floating-background__glow {
+  opacity: 0.12;
+  filter: blur(110px);
+}
+
+:root[data-theme="light"] .floating-background__glow--one {
+  background: #5eead4;
+}
+
+:root[data-theme="light"] .floating-background__glow--two {
+  background: #93c5fd;
+}
+
+/* Cards */
+:root[data-theme="light"] .card {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .card:hover {
+  box-shadow: 0 16px 40px rgba(13, 148, 136, 0.1);
+}
+
+/* Fade animations remain active in both themes */
+:root[data-theme="light"] .animate-fade-up,
+:root[data-theme="light"] .animate-fade-in,
+:root[data-theme="light"] .animate-float {
+  /* Keep existing animation names and timing */
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme="light"] *,
+  :root[data-theme="light"] *::before,
+  :root[data-theme="light"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

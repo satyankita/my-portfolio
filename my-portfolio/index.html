@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satyankita Singh | Aspiring Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Satyankita Singh, an aspiring full-stack developer building web applications with React, Node.js, Express and databases. Open to internships." />
+    <meta name="theme-color" content="#0B1120" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Satyankita Singh | Aspiring Full-Stack Developer" />
+    <meta property="og:description" content="Projects, skills and contact details of Satyankita Singh, seeking full-stack and React developer internships." />
+    <!-- After deploying, add: <meta property="og:url" content="https://your-site.com" /> and an og:image -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Runs before first paint so the wrong theme never flashes.
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

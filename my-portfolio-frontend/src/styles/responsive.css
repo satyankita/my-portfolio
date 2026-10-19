@@ -1,0 +1,52 @@
+
+/* =========================================
+   RESPONSIVE FOUNDATION
+   ========================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    --container-width: 900px;
+  }
+
+  .section {
+    padding-block: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 36px);
+  }
+
+  .section {
+    padding-block: 64px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .section-subtitle {
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .section {
+    padding-block: 52px;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 8vw, 2.1rem);
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+}
